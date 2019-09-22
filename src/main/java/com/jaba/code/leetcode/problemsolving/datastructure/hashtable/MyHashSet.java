@@ -1,10 +1,10 @@
 package com.jaba.code.leetcode.problemsolving.datastructure.hashtable;
 
-class MyHashSet {
+public class MyHashSet {
     
-    private final int BUCKETS = 1000;
 	private final int ITEM_PER_BUCKETS = 1000;
-    
+    private final int BUCKETS = 1000;
+
     private boolean[][] bucketList;
 
     /** Initialize your data structure here. */
