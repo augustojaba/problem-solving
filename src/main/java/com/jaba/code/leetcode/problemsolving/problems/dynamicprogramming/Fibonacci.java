@@ -2,7 +2,7 @@ package com.jaba.code.leetcode.problemsolving.problems.dynamicprogramming;
 
 public class Fibonacci {
 
-    int[] fiboMemo;
+    long[] fiboMemo;
 
     private int fibo(int n) {
         if (n <= 1) {
@@ -12,10 +12,10 @@ public class Fibonacci {
         return fibo(n-1) + fibo(n-2);
     }
 
-    private int fiboDPMemo(int n) {
+    private long fiboDPMemo(int n) {
 
         if (this.fiboMemo == null) {
-            fiboMemo = new int[n + 1];
+            fiboMemo = new long[n + 1];
         }
 
         if (n <= 1) {
