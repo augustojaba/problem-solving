@@ -4,32 +4,28 @@ import java.util.HashSet;
 import java.util.Set;
 
 class SingleNumber {
-    public int singleNumber(int[] nums) {
+  public static void main(String[] args) {
+    System.out.println(1 ^ 1);
+  }
 
-        int solution = -1;
+  public int singleNumber(int[] nums) {
 
-        Set<Integer> auxSet = new HashSet<>();
+    int solution = -1;
 
-        auxSet.stream()
-                .mapToInt(Integer::intValue)
-                .toArray();
+    Set<Integer> auxSet = new HashSet<>();
 
-        for (int i: nums) {
-            if (auxSet.contains(i)) {
-                auxSet.remove(i);
-            } else {
-                auxSet.add(i);
-            }
+    auxSet.stream().mapToInt(Integer::intValue).toArray();
 
-        }
-
-        for(int i: auxSet)
-            solution = i;
-
-        return solution;
+    for (int i : nums) {
+      if (auxSet.contains(i)) {
+        auxSet.remove(i);
+      } else {
+        auxSet.add(i);
+      }
     }
 
-    public static void main(String[] args) {
-        System.out.println(1 ^ 1);
-    }
+    for (int i : auxSet) solution = i;
+
+    return solution;
+  }
 }

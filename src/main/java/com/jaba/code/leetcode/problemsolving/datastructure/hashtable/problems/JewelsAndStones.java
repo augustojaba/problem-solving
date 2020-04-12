@@ -2,23 +2,23 @@ package com.jaba.code.leetcode.problemsolving.datastructure.hashtable.problems;
 
 public class JewelsAndStones {
 
-    public int numJewelsInStones(String j, String s) {
+  public static void main(String[] args) {
+    System.out.println(new JewelsAndStones().numJewelsInStones("aA", "aAAbbbb"));
+  }
 
-        final char[] input = s.toCharArray();
-        //final Set<Character> set = new HashSet(Arrays.asList(j.toCharArray()));
+  public int numJewelsInStones(String j, String s) {
 
-        int result = 0;
+    final char[] input = s.toCharArray();
+    // final Set<Character> set = new HashSet(Arrays.asList(j.toCharArray()));
 
-        for (char c: input) {
-            if (j.indexOf(c) >= 0) {
-                result++;
-            }
-        }
+    int result = 0;
 
-        return result;
+    for (char c : input) {
+      if (j.indexOf(c) >= 0) {
+        result++;
+      }
     }
 
-    public static void main(String[] args) {
-        System.out.println(new JewelsAndStones().numJewelsInStones("aA", "aAAbbbb"));
-    }
+    return result;
+  }
 }

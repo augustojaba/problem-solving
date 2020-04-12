@@ -2,44 +2,43 @@ package com.jaba.code.leetcode.problemsolving.problems;
 
 public class IntegerToRoman {
 
-    public String intToRoman(int num) {
-        int grade = 0;
-        StringBuilder result = new StringBuilder();
+  public static void main(String[] args) {
+    System.out.println(new IntegerToRoman().intToRoman(20));
+    System.out.println(new IntegerToRoman().intToRoman(10));
+    System.out.println(new IntegerToRoman().intToRoman(18));
+    System.out.println(new IntegerToRoman().intToRoman(58));
+    System.out.println(new IntegerToRoman().intToRoman(3999));
+    System.out.println(new IntegerToRoman().intToRoman(0));
+    System.out.println(new IntegerToRoman().intToRoman(1997));
+  }
 
-        String[][] table = {
-                {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"},
-                {"X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"},
-                {"C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"},
-                {"M", "MM", "MMM"}
-        };
+  public String intToRoman(int num) {
+    int grade = 0;
+    StringBuilder result = new StringBuilder();
 
-        while (num > 0) {
-            int radix = num % 10;
+    String[][] table = {
+      {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"},
+      {"X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"},
+      {"C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"},
+      {"M", "MM", "MMM"}
+    };
 
-            if (radix == 0) {
-                grade++;
-                num /= 10;
-                continue;
-            } else {
-                radix = radix -1;
-            }
+    while (num > 0) {
+      int radix = num % 10;
 
-            result.insert(0, table[grade][radix]);
-            grade++;
-            num /= 10;
-        }
+      if (radix == 0) {
+        grade++;
+        num /= 10;
+        continue;
+      } else {
+        radix = radix - 1;
+      }
 
-        return result.toString();
-
+      result.insert(0, table[grade][radix]);
+      grade++;
+      num /= 10;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new IntegerToRoman().intToRoman(20));
-        System.out.println(new IntegerToRoman().intToRoman(10));
-        System.out.println(new IntegerToRoman().intToRoman(18));
-        System.out.println(new IntegerToRoman().intToRoman(58));
-        System.out.println(new IntegerToRoman().intToRoman(3999));
-        System.out.println(new IntegerToRoman().intToRoman(0));
-        System.out.println(new IntegerToRoman().intToRoman(1997));
-    }
+    return result.toString();
+  }
 }

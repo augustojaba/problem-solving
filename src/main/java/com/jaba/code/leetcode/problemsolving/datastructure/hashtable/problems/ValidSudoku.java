@@ -7,96 +7,108 @@ import java.util.Set;
 
 public class ValidSudoku {
 
-    public boolean isValidSudoku(char[][] board) {
+  public static void main(String[] args) {
 
-        Map<Integer, Set<Character>> map = new HashMap<>();
+    System.out.println(
+        new ValidSudoku()
+            .isValidSudoku(
+                new char[][] {
+                  new char[] {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+                  new char[] {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+                  new char[] {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+                  new char[] {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+                  new char[] {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+                  new char[] {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+                  new char[] {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+                  new char[] {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+                  new char[] {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
+                }));
 
-        for (int i = 0; i < board.length; i++) {
+    System.out.println(
+        new ValidSudoku()
+            .isValidSudoku(
+                new char[][] {
+                  new char[] {'5', '3', '.', '.', '5', '.', '.', '.', '.'},
+                  new char[] {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+                  new char[] {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+                  new char[] {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+                  new char[] {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+                  new char[] {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+                  new char[] {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+                  new char[] {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+                  new char[] {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
+                }));
 
-            int indexCol = i;
-            int indexRow = i + 10;
+    System.out.println(
+        new ValidSudoku()
+            .isValidSudoku(
+                new char[][] {
+                  new char[] {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+                  new char[] {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+                  new char[] {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+                  new char[] {'5', '.', '.', '.', '6', '.', '.', '.', '3'},
+                  new char[] {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+                  new char[] {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+                  new char[] {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+                  new char[] {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+                  new char[] {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
+                }));
 
-            map.put(indexCol, new HashSet<>());
-            map.put(indexRow, new HashSet<>());
+    System.out.println(
+        new ValidSudoku()
+            .isValidSudoku(
+                new char[][] {
+                  new char[] {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+                  new char[] {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+                  new char[] {'.', '5', '8', '.', '.', '.', '.', '6', '.'},
+                  new char[] {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+                  new char[] {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+                  new char[] {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+                  new char[] {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+                  new char[] {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+                  new char[] {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
+                }));
+  }
 
-            for (int j = 0; j < board[i].length; j ++) {
-                int indexBlock = 20 + ((i/3)*3 + (j/3));
+  public boolean isValidSudoku(char[][] board) {
 
-                if (!map.containsKey(indexBlock)) {
-                    map.put(indexBlock, new HashSet<>());
-                }
+    Map<Integer, Set<Character>> map = new HashMap<>();
 
-                if (!map.get(indexCol).contains(board[i][j]) && board[i][j] != '.') {
-                    map.get(indexCol).add(board[i][j]);
-                } else if (map.get(indexCol).contains(board[i][j])) {
-                    return false;
-                }
+    for (int i = 0; i < board.length; i++) {
 
-                if (!map.get(indexRow).contains(board[j][i]) && board[j][i] != '.') {
-                    map.get(indexRow).add(board[j][i]);
-                } else if (map.get(indexRow).contains(board[j][i])) {
-                    return false;
-                }
+      int indexCol = i;
+      int indexRow = i + 10;
 
-                if (!map.get(indexBlock).contains(board[i][j]) && board[i][j] != '.') {
-                    map.get(indexBlock).add(board[i][j]);
-                } else if (map.get(indexBlock).contains(board[i][j])) {
-                    return false;
-                }
-            }
+      map.put(indexCol, new HashSet<>());
+      map.put(indexRow, new HashSet<>());
+
+      for (int j = 0; j < board[i].length; j++) {
+        int indexBlock = 20 + ((i / 3) * 3 + (j / 3));
+
+        if (!map.containsKey(indexBlock)) {
+          map.put(indexBlock, new HashSet<>());
         }
 
-        return true;
+        if (!map.get(indexCol).contains(board[i][j]) && board[i][j] != '.') {
+          map.get(indexCol).add(board[i][j]);
+        } else if (map.get(indexCol).contains(board[i][j])) {
+          return false;
+        }
+
+        if (!map.get(indexRow).contains(board[j][i]) && board[j][i] != '.') {
+          map.get(indexRow).add(board[j][i]);
+        } else if (map.get(indexRow).contains(board[j][i])) {
+          return false;
+        }
+
+        if (!map.get(indexBlock).contains(board[i][j]) && board[i][j] != '.') {
+          map.get(indexBlock).add(board[i][j]);
+        } else if (map.get(indexBlock).contains(board[i][j])) {
+          return false;
+        }
+      }
     }
 
-    public static void main(String[] args) {
-
-        System.out.println(new ValidSudoku().isValidSudoku(new char[][] {
-                new char[] {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
-                new char[] {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
-                new char[] {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
-                new char[] {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
-                new char[] {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
-                new char[] {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
-                new char[] {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
-                new char[] {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
-                new char[] {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
-        }));
-
-        System.out.println(new ValidSudoku().isValidSudoku(new char[][] {
-                new char[] {'5', '3', '.', '.', '5', '.', '.', '.', '.'},
-                new char[] {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
-                new char[] {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
-                new char[] {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
-                new char[] {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
-                new char[] {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
-                new char[] {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
-                new char[] {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
-                new char[] {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
-        }));
-
-        System.out.println(new ValidSudoku().isValidSudoku(new char[][] {
-                new char[] {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
-                new char[] {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
-                new char[] {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
-                new char[] {'5', '.', '.', '.', '6', '.', '.', '.', '3'},
-                new char[] {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
-                new char[] {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
-                new char[] {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
-                new char[] {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
-                new char[] {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
-        }));
-
-        System.out.println(new ValidSudoku().isValidSudoku(new char[][] {
-                new char[] {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
-                new char[] {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
-                new char[] {'.', '5', '8', '.', '.', '.', '.', '6', '.'},
-                new char[] {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
-                new char[] {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
-                new char[] {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
-                new char[] {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
-                new char[] {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
-                new char[] {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
-        }));
-    }
+    return true;
+  }
 }

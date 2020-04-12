@@ -6,40 +6,37 @@ import java.util.List;
 import java.util.Set;
 
 class Solution3 {
-    public int[] intersection(int[] nums1, int[] nums2) {
+  public static void main(String[] args) {
+    System.out.println(1 ^ 1);
+  }
 
-        List<Integer> solution = new ArrayList<>();
-        Set<Integer> auxSet = new HashSet<>();
+  public int[] intersection(int[] nums1, int[] nums2) {
 
-        int[] smaller = null;
+    List<Integer> solution = new ArrayList<>();
+    Set<Integer> auxSet = new HashSet<>();
 
-        if (nums1.length > nums2.length) {
-            this.addAll(nums1, auxSet);
-            smaller = nums2;
-        } else {
-            this.addAll(nums2, auxSet);
-            smaller = nums1;
-        }
+    int[] smaller = null;
 
-        for (int i: smaller) {
-            if (auxSet.contains(i)) {
-                solution.add(i);
-            }
-        }
-
-        return solution.stream()
-                .mapToInt(Integer::intValue)
-                .toArray();
-
+    if (nums1.length > nums2.length) {
+      this.addAll(nums1, auxSet);
+      smaller = nums2;
+    } else {
+      this.addAll(nums2, auxSet);
+      smaller = nums1;
     }
 
-    private void addAll(int[] source, Set<Integer> target) {
-        for(int i: source) {
-            target.add(i);
-        }
+    for (int i : smaller) {
+      if (auxSet.contains(i)) {
+        solution.add(i);
+      }
     }
 
-    public static void main(String[] args) {
-        System.out.println(1 ^ 1);
+    return solution.stream().mapToInt(Integer::intValue).toArray();
+  }
+
+  private void addAll(int[] source, Set<Integer> target) {
+    for (int i : source) {
+      target.add(i);
     }
+  }
 }
