@@ -2,38 +2,33 @@ package com.jaba.code.leetcode.problemsolving.problems;
 
 public class BinarySearch {
 
-  static boolean exists(int[] ints, int k) {
+  static int binarySearch(int[] ints, int k) {
+    if (0 == ints.length) {
+      return -1;
+    } else if (k < ints[0] && k > ints[ints.length - 1]) {
+      return -1;
+    } else {
+      int left = 0;
+      int right = ints.length - 1;
 
-    if (ints[0] > k || ints[ints.length - 1] < k) {
-      return false;
-    }
+      while (left <= right) {
 
-    if (ints.length == 0) {
-      return false;
-    }
+        int mid = left + (right - left) / 2;
 
-    int min = 0;
-    int max = ints.length;
-    int mid = (max - min) / 2;
-
-    while (mid > 0 || mid < ints.length) {
-      if (ints[mid] == k) {
-        return true;
+        if (k == ints[mid]) {
+          return mid;
+        } else if (k <= ints[mid]) {
+          right = mid - 1;
+        } else {
+          left = mid + 1;
+        }
       }
 
-      if (ints[mid] < k) {
-        min = mid;
-      } else {
-        max = mid;
-      }
-
-      mid = (max + min) / 2;
+      return -1;
     }
-
-    return false;
   }
 
   public static void main(String[] args) {
-    System.out.println(BinarySearch.exists(new int[] {-9, 14, 37, 102}, 4));
+    System.out.println(BinarySearch.binarySearch(new int[] {-9, 14, 37, 102}, 14));
   }
 }
