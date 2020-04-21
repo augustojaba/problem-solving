@@ -1,12 +1,16 @@
 package com.jaba.code.leetcode.problemsolving.datastructure.tree;
 
-class TreeNode<T extends Comparable<?>> {
+public class TreeNode<T extends Comparable<?>> {
 
-    T val;
-    TreeNode<T> left;
-    TreeNode<T> right;
+  public T val;
+  public TreeNode<T> left;
+  public TreeNode<T> right;
 
-    TreeNode(T val) {
-        this.val = val;
-    }
+  public TreeNode(T val) {
+    this.val = val;
+  }
+
+  public void print() {
+    BinaryTreePrinter.printNode(this);
+  }
 }
