@@ -1,4 +1,4 @@
-package com.jaba.code.leetcode.problemsolving.sandbox;
+package com.jaba.code.leetcode.sandbox;
 
 public class Test {
 
