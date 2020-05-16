@@ -1,4 +1,4 @@
-package com.jaba.code.leetcode.problemsolving.problems;
+package com.jaba.code.leetcode.sandbox;
 
 import com.jaba.code.leetcode.problemsolving.datastructure.hashtable.MyHashSet;
 import org.junit.Assert;
@@ -10,7 +10,7 @@ public class MyHashTest {
 
   @Test
   public void testMyList() {
-    MyHashSet hash = new MyHashSet();
+    final MyHashSet hash = new MyHashSet();
     hash.add(0);
     hash.add(1000000);
     hash.add(1);
@@ -43,7 +43,7 @@ public class MyHashTest {
 
   // @Test
   public void testHashMap() {
-    HashMap<Integer, Object> m = new HashMap<Integer, Object>();
+    final HashMap<Integer, Object> m = new HashMap<>();
 
     m.put(4, new Object());
     m.put(2, new Object());
@@ -54,7 +54,7 @@ public class MyHashTest {
     m.put(5, new Object());
     m.put(6, new Object());
 
-    for (Integer key : m.keySet()) {
+    for (final Integer key : m.keySet()) {
       System.out.println(key);
     }
   }
